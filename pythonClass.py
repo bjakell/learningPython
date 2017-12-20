@@ -9,9 +9,8 @@ class RandomGenerator:
         self.randomList = []
 
     def writeNumbers(self):
-        #for x in self.randomList:
-            #print(x)
-        print(self.randomList)
+        sys.stdout = open(self.fileName, 'w')
+        print(self.randomList, sep="\n")
 
     def genRandomNumber(self):
         x = random.randint(0, self.upper)
@@ -27,6 +26,6 @@ while(decision == "yes"):
     number.genRandomNumber()
     number.writeNumbers()
     decision = input('Would you like another random number? ')
-    upper = int(input('Please enter the max value you want the random number to be: '))
+    #if(decision == "yes") : upper = int(input('Please enter the max value you want the random number to be: '))
 
 print("Well that was fun!")
