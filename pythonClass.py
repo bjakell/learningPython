@@ -1,5 +1,4 @@
 #!/usr/bin/env python3.6
-import os
 import sys
 import random
 
@@ -7,24 +6,27 @@ class RandomGenerator:
     def __init__(self, upper, fileName):
         self.upper = upper
         self.fileName = fileName
-        randomList = []
+        self.randomList = []
 
     def writeNumbers(self):
-        print(randomList + os.linesep)
+        #for x in self.randomList:
+            #print(x)
+        print(self.randomList)
 
     def genRandomNumber(self):
-        for x in range(1, self.upper):
-            randomList = randomList.append(x)
+        x = random.randint(0, self.upper)
+        if x not in self.randomList:
+            self.randomList.append(x)
 
 decision = input('Would you like a random number? ')
+upper = int(input('Please enter the max value you want the random number to be: '))
+fileName = input('Which file would you like it written to? ')
+number = RandomGenerator(upper, fileName)
 
 while(decision == "yes"):
-    upper = int(input('Please enter the max value you want the random number to be: '))
-    fileName = input('Which file would you like it written to? ')
-    number = RandomGenerator(upper, fileName)
     number.genRandomNumber()
     number.writeNumbers()
-
     decision = input('Would you like another random number? ')
+    upper = int(input('Please enter the max value you want the random number to be: '))
 
 print("Well that was fun!")
